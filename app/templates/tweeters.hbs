@@ -1,11 +1,8 @@
-<div class="jumbo">
+<div class="row">
   <h2>Welcome!</h2>
   <p>List of all UCLA Sports Twitter Accounts:</p>
 
-  {{#each model as |tweeter|}}
-    <div>
-      <h3>{{tweeter.screen_name}}</h3>
-      <p>{{tweeter.description}}</p>
-    </div>
+  {{#each model as |twitterUser|}}
+    {{tweeter-listing tweeter=twitterUser}}
   {{/each}}
 </div>
