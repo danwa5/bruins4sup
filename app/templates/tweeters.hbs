@@ -1,0 +1,11 @@
+<div class="jumbo">
+  <h2>Welcome!</h2>
+  <p>List of all UCLA Sports Twitter Accounts:</p>
+
+  {{#each model as |tweeter|}}
+    <div>
+      <h3>{{tweeter.screen_name}}</h3>
+      <p>{{tweeter.description}}</p>
+    </div>
+  {{/each}}
+</div>
