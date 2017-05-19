@@ -1,8 +1,6 @@
 <div class="row">
-  <h2>Welcome!</h2>
-  <p>List of all UCLA Sports Twitter Accounts:</p>
-
   {{#each model as |twitterUser|}}
     {{tweeter-listing tweeter=twitterUser}}
   {{/each}}
 </div>
+{{outlet}}
