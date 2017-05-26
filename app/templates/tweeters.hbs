@@ -1,14 +1,1 @@
-<div class="row">
-  <div class="col-sm-4 sidebar">
-    {{#each model as |twitterUser|}}
-      {{tweeter-listing tweeter=twitterUser}}
-    {{/each}}
-  </div>
-  <div class="col-sm-8 main">
-    {{#each flashMessages.queue as |flash|}}
-      {{flash-message flash=flash}}
-    {{/each}}
-
-    {{outlet}}
-  </div>
-</div>
+{{twitter-container tweeters=model}}
