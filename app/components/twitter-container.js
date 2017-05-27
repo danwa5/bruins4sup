@@ -34,6 +34,7 @@ export default Ember.Component.extend({
       tweeter.save().then(() => {
         this.get('flashMessages').success(`Twitter User @${this.get('foundTwitterUser')['screen_name']} was successfully saved!`);
       }).catch(() => {
+        tweeter.unloadRecord()
         this.get('flashMessages').danger(`Twitter User @${this.get('foundTwitterUser')['screen_name']} could not be saved!`);
       });
     }
