@@ -18,40 +18,6 @@
       </form>
     </div>
 
-    <div class="col-sm-12">
-      <form class="form-horizontal" {{action "saveTwitterUser" on="submit"}}>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="uid">UID</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="uid" value={{foundTwitterUser.id}} readonly />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="screen_name">Screen Name</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="screen_name" value={{foundTwitterUser.screen_name}} readonly />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="name">Name</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="name" value={{foundTwitterUser.name}} readonly />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="description">Description</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="description" value={{foundTwitterUser.description}} readonly />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="profile_image_url">Profile Image URL</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="profile_image_url" value={{foundTwitterUser.profile_image_url}} readonly />
-          </div>
-        </div>
-        <button type="submit" class="btn btn-default">Save</button>
-      </form>
-    </div>
+    {{twitter-user-form twitterUser=foundTwitterUser onSubmit=(action 'saveTwitterUser')}}
   </div>
 </div>

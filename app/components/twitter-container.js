@@ -16,8 +16,9 @@ export default Ember.Component.extend({
       return this.get('ajax').request('/api/v1/twitter/users/' + input)
       .then((res) => {
         this.set('foundTwitterUser', res);
-        this.get('flashMessages').success(`Twitter User @${input} was found!`);
+        // this.get('flashMessages').success(`Twitter User @${input} was found!`);
       }).catch(() => {
+        this.set('foundTwitterUser', null);
         this.get('flashMessages').danger(`Twitter User @${input} does not exist!`);
       });
     },

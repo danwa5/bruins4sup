@@ -1,0 +1,10 @@
+<div class="col-sm-12">
+  <form class="form-horizontal" {{action "saveTwitterUser" on="submit"}}>
+    {{twitter-user-form-field label="UID" name="uid" value=twitterUser.id}}
+    {{twitter-user-form-field label="Screen Name" name="screen_name" value=twitterUser.screen_name}}
+    {{twitter-user-form-field label="Name" name="name" value=twitterUser.name}}
+    {{twitter-user-form-field label="Description" name="description" value=twitterUser.description}}
+    {{twitter-user-form-field label="Profile Image URL" name="profile_image_url" value=twitterUser.profile_image_url}}
+    <button type="submit" class="btn btn-default">Save</button>
+  </form>
+</div>
