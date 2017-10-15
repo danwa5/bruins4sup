@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   disableSave: true,
   foundTwitterUser: null,
   tweeters: [],
+  tweets: [],
 
   actions: {
     findTwitterUser() {
@@ -37,6 +38,14 @@ export default Ember.Component.extend({
       }).catch(() => {
         tweeter.unloadRecord()
         this.get('flashMessages').danger(`Twitter User @${this.get('foundTwitterUser')['screen_name']} could not be saved!`);
+      });
+    },
+
+    displayTweets(tweeter_uid) {
+      return this.get('ajax').request(`/api/v1/twitter/users/${tweeter_uid}/tweets`, {
+      }).then((response) => {
+        // console.log(response[0]);
+        this.set('tweets', response);
       });
     }
   }

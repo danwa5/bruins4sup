@@ -3,6 +3,7 @@
   <h6>@{{t.screen_name}}</h6>
   <h6>{{t.uid}}</h6>
   <p>{{t.description}}</p>
+  <p><a {{action "displayTweets" t.uid on="click"}}>display tweets</a></p>
   <p><a {{action "deleteTweeter" t on="click"}}>delete</a></p>
   <img src="{{t.profile_image_url}}" class="img-rounded">
 </div>
