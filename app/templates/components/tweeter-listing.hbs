@@ -1,9 +1,13 @@
-<div class="col-sm-12">
-  <h3>{{t.name}}</h3>
-  <h6>@{{t.screen_name}}</h6>
-  <h6>{{t.uid}}</h6>
-  <p>{{t.description}}</p>
-  <p><a {{action "displayTweets" t.uid on="click"}}>display tweets</a></p>
-  <p><a {{action "deleteTweeter" t on="click"}}>delete</a></p>
-  <img src="{{t.profile_image_url}}" class="img-rounded">
-</div>
+<a href="#" class="list-group-item" {{action "displayTweets" t.uid on="click"}}>
+  <div class="media">
+    <div class="media-left">
+      <img class="media-object img-circle" src="{{t.profile_image_url}}" alt="...">
+      <p><a {{action "deleteTweeter" t on="click"}}>delete</a></p>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{t.name}}</h4>
+      <h6>@{{t.screen_name}} {{t.uid}}</h6>
+      <p>{{t.description}}</p>
+    </div>
+  </div>
+</a>

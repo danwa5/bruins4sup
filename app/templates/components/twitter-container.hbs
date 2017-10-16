@@ -1,8 +1,24 @@
 <div class="row">
   <div class="col-sm-5 sidebar">
-    {{#each tweeters as |tweeter|}}
-      {{tweeter-listing t=tweeter onClick=(action 'displayTweets')}}
-    {{/each}}
+    <div class="list-group">
+      {{#each tweeters as |tweeter|}}
+        {{tweeter-listing t=tweeter onClick=(action 'displayTweets')}}
+      {{/each}}
+    </div>
+
+    <div class="list-group">
+      <div class="list-group-item twitter-search-bar">
+        <form class="form-inline" {{action "findTwitterUser" on="submit"}}>
+          <div class="form-group">
+            {{input type="text" value=twitterScreenName class="form-control" placeholder="Twitter Screen Name"}}
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div>
+      <div class="list-group-item">
+        {{twitter-user-form twitterUser=foundTwitterUser onSubmit=(action 'saveTwitterUser')}}
+      </div>
+    </div>
   </div>
   <div class="col-sm-7 main">
     {{#each flashMessages.queue as |flash|}}
@@ -10,20 +26,11 @@
     {{/each}}
 
     <div class="col-sm-12">
-      <form class="form-inline" {{action "findTwitterUser" on="submit"}}>
-        <div class="form-group">
-          {{input type="text" value=twitterScreenName class="form-control" placeholder="Twitter Screen Name"}}
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
-
-      {{twitter-user-form twitterUser=foundTwitterUser onSubmit=(action 'saveTwitterUser')}}
-    </div>
-
-    <div>
       {{#each tweets as |tweet|}}
-        <blockquote class="twitter-tweet">
-          <p>{{tweet.text}}</p>
+        <blockquote class="twitter-tweet" data-lang="en">
+          <p lang="en" dir="ltr">{{tweet.text}}</p>
+          &mdash; {{tweet.user.name}} (@{{tweet.user.screen_name}})
+          <a href="https://twitter.com/{{tweet.screen_name}}/status/{{tweet.id_str}}?ref_src=twsrc%5Etfw">{{tweet.created_at}}</a>
         </blockquote>
       {{/each}}
     </div>
