@@ -1,13 +1,17 @@
-<a href="#" class="list-group-item" {{action "displayTweets" t.uid on="click"}}>
-  <div class="media">
-    <div class="media-left">
-      <img class="media-object img-circle" src="{{t.profile_image_url}}" alt="...">
-      <p><a {{action "deleteTweeter" t on="click"}}>delete</a></p>
-    </div>
-    <div class="media-body">
-      <h4 class="media-heading">{{t.name}}</h4>
-      <h6>@{{t.screen_name}} {{t.uid}}</h6>
-      <p>{{t.description}}</p>
-    </div>
+<div class="media" onclick={{onClick}}>
+  <div class="media-left">
+    <img class="media-object img-circle" src="{{t.profile_image_url}}">
   </div>
-</a>
+  <div class="media-body">
+    <div class="media-heading-table">
+      <div class="media-heading-left">
+        <h4 class="media-heading">{{t.name}}</h4>
+      </div>
+      <div class="media-heading-right">
+        <a {{action "deleteTweeter" t on="click"}}>{{fa-icon "times"}}</a>
+      </div>
+    </div>
+    <h6>@{{t.screen_name}} {{t.uid}}</h6>
+    <p>{{t.description}}</p>
+  </div>
+</div>

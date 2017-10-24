@@ -7,10 +7,23 @@ export default Ember.Component.extend({
 
   disableSave: true,
   foundTwitterUser: null,
+  selectedTweeter: null,
   tweeters: [],
   tweets: [],
 
   actions: {
+    selectTweeter(selectedTweeter, selectedTweeterUID) {
+      this.set('selectedTweeter', selectedTweeter);
+      this.send('displayTweets', selectedTweeterUID);
+    },
+
+    displayTweets(tweeter_uid) {
+      return this.get('ajax').request(`/api/v1/twitter/users/${tweeter_uid}/tweets`, {
+      }).then((response) => {
+        this.set('tweets', response);
+      });
+    },
+
     findTwitterUser() {
       var input = this.get('twitterScreenName');
 
@@ -37,17 +50,10 @@ export default Ember.Component.extend({
         this.get('flashMessages').success(`Twitter User @${this.get('foundTwitterUser')['screen_name']} was successfully saved!`);
         this.set('foundTwitterUser', null);
         this.set('tweets', null);
+        document.getElementById("twitter-user-search-form").reset();
       }).catch(() => {
         tweeter.unloadRecord()
         this.get('flashMessages').danger(`Twitter User @${this.get('foundTwitterUser')['screen_name']} could not be saved!`);
-      });
-    },
-
-    displayTweets(tweeter_uid) {
-      return this.get('ajax').request(`/api/v1/twitter/users/${tweeter_uid}/tweets`, {
-      }).then((response) => {
-        // console.log(response[0]);
-        this.set('tweets', response);
       });
     }
   }

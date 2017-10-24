@@ -2,13 +2,13 @@
   <div class="col-sm-5 sidebar">
     <div class="list-group">
       {{#each tweeters as |tweeter|}}
-        {{tweeter-listing t=tweeter onClick=(action 'displayTweets')}}
+        {{tweeter-listing t=tweeter selectedTweeter=selectedTweeter isSelected=false onClick=(action 'selectTweeter' tweeter tweeter.uid)}}
       {{/each}}
     </div>
 
     <div class="list-group">
       <div class="list-group-item twitter-search-bar">
-        <form class="form-inline" {{action "findTwitterUser" on="submit"}}>
+        <form id="twitter-user-search-form" class="form-inline" {{action "findTwitterUser" on="submit"}}>
           <div class="form-group">
             {{input type="text" value=twitterScreenName class="form-control" placeholder="Twitter Screen Name"}}
           </div>
